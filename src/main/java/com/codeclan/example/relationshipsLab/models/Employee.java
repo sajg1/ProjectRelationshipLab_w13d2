@@ -2,26 +2,29 @@ package com.codeclan.example.relationshipsLab.models;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "employees")
 
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column("emplyeeNumber")
+    @Column(name = "employee_number")
     private Long employeeNumber;
-    @Column("first_name")
+    @Column(name = "first_name")
     private String firstName;
-    @Column("last_name")
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "department")
+    private Department department;
 
 
-    public Employee(String firstName, String lastName) {
+    public Employee(String firstName, String lastName, Department department) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.department = department;
 
     }
 
